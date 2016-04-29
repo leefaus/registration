@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>Registration</title>
+    <%= action_cable_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  </head>
+
+  <body>
+    <div class="pos-f-t">
+      <div class="collapse" id="navbar-header">
+        <div class="container-fluid bg-inverse p-a-1">
+          <h3>Collapsed content</h3>
+          <p>Toggleable via the navbar brand.</p>
+        </div>
+      </div>
+      <div class="navbar navbar-light bg-faded navbar-static-top">
+        <h3 class="title">
+          <span class="mega-octicon octicon-mark-github"></span> enablement registration
+        </h3>
+        <span class="sign-out">
+          <% if account_signed_in? %>
+             <%= link_to "Sign Out <b>#{warden.user.login}</b>".html_safe, destroy_account_session_path, class: "btn btn-primary-outline btn-sm sign-out" %>
+          <% else %>
+            <%= link_to 'Sign In via GitHub', '/accounts/auth/github', class: "btn btn-primary-outline btn-sm sign-out" %>
+          <% end %>
+        </span>
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-header"> -->
+      </div>
+    </div>
+
+    <div class="container">
+      <% if !notice.nil? %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+      <% if !alert.nil? %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
+      <%= yield %>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  </body>
+</html>
