@@ -1,0 +1,123 @@
+<div class="row">
+  <div class="col-md-12">
+    <h2>Registration Form</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <%= form_tag("/registration", method: "post") do %>
+      <input type="hidden" name="partnerId" value="<%= @partner.id %>">
+      <fieldset class="form-group">
+        <label for="partnerName">Partner Name</label>
+        <input type="text" class="form-control" name="partnerName" value="<%= @partner.name %>" disabled="true">
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="githubAccount">GitHub Account</label>
+        <input type="text" class="form-control" name="githubAccount" value="<%= @account.login %>" readonly="true">
+        <small class="text-muted">This value is set from your login.</small>
+      </fieldset>
+      <label class="radio-header">Are you the primary point of contact?</label>
+      <fieldset class="form-group">
+        <div class="checkbox">
+          <label>
+            <%= check_box "registrant", "primary", {}, "true", "false" %>Yes</br>
+          </label>
+        </div>
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="emailAddress">Email Address</label>
+        <input type="text" class="form-control" name="emailAddress" value="<%= @account.email %>">
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" name="firstName">
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" name="lastName">
+      </fieldset>
+      <label class="radio-header">Git Comfort Level</label>
+      <fieldset class="form-group">
+        <div class="radio-inline">
+          <label>
+            <input type="radio" name="gitComfortLevel" id="inlineRadio1" value="low"> low
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            <input type="radio" name="gitComfortLevel" id="inlineRadio2" value="medium"> medium
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            <input type="radio" name="gitComfortLevel" id="inlineRadio3" value="high"> high
+          </label>
+        </div>
+      </fieldset>
+      <label class="radio-header">GitHub Comfort Level</label>
+      <fieldset class="form-group">
+        <div class="radio-inline">
+          <label>
+            <input type="radio" name="githubComfortLevel" id="inlineRadio1" value="low"> low
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            <input type="radio" name="githubComfortLevel" id="inlineRadio2" value="medium"> medium
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            <input type="radio" name="githubComfortLevel" id="inlineRadio3" value="high"> high
+          </label>
+        </div>
+      </fieldset>
+      <label class="radio-header">Custom Development Comfort Level</label>
+      <fieldset class="form-group">
+        <div class="radio-inline">
+          <label>
+            <input type="radio" name="developmentComfortLevel" id="inlineRadio1" value="low"> low
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            <input type="radio" name="developmentComfortLevel" id="inlineRadio2" value="medium"> medium
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            <input type="radio" name="developmentComfortLevel" id="inlineRadio3" value="high"> high
+          </label>
+        </div>
+      </fieldset>
+      <label class="radio-header">Virtual Appliance Administration Comfort Level</label>
+      <fieldset class="form-group">
+        <div class="radio-inline">
+          <label>
+            <input type="radio" name="administrationComfortLevel" id="inlineRadio1" value="low"> low
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            <input type="radio" name="administrationComfortLevel" id="inlineRadio2" value="medium"> medium
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            <input type="radio" name="administrationComfortLevel" id="inlineRadio3" value="high"> high
+          </label>
+        </div>
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="goals">Items You Would Like Covered</label>
+        <textarea class="form-control" name="goals" rows="5"></textarea>
+      </fieldset>
+      <button type="submit" class="btn btn-primary">Register</button>
+      <button type="submit" class="btn btn-primary">Cancel</button>
+    <% end %>
+  </div>
+  <div class="col-md-4">
+    card showing other members
+  </div>
+</div>

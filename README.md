@@ -1,24 +1,33 @@
-## README
+## Getting Started
+- Install [`homebrew`](http://brew.sh/), `rbenv`, & `postgresql`
+  - `brew install rbenv ruby-build`
+  - `echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.bash_profile`
+  - `source ~/.bash_profile`
+  - `rbenv install 2.2.4`
+  - `rbenv global 2.2.4`
+  - `rbenv rehash`
+  - `brew install postgresql`
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- `git checkout https://github.com/githubpartners/registration`
+  - _Go to a branch if you want to work on something in progress_
+- `cd registration`
+- `bundle install`
+- `rails db:create`
+- `rails db:migrate`
+- `rails db:seed`
+- `bundle exec figaro install`
 
-Things you may want to cover:
+## Setup GitHub Enterprise
+- Login to GitHub Enterprise
+- [Create a new Oauth Application](https://help.github.com/enterprise/admin/guides/user-management/using-github-oauth/)
+- The **Homepage URL** should be your **http://LOCAL_VMW_ADDR:3000** (using VMWare Fusion host-only networking)
+- The **Authorization Callback URL** should be `http://LOCAL_VMW_ADDR:3000/users/auth/github/callback`
+- Once the application is created, save the `client_id` AND `client_secret` to be used later in the `application.yml`
+- Create the following key/value pairs corresponding to your install in the `config/application.yml`
+  - `github_client_id: <value>`
+  - `github_application_secret: <value>`
+  - `github_enterprise_url: <value>`
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Running the Application
+- `rails s -b 0.0.0.0`
+- open your browser to **http://LOCAL_VMW_ADDR:3000** 

@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   # Serve websocket cable requests in-process
   # mount ActionCable.server => '/cable'
+
   devise_for :accounts, :controllers => { :omniauth_callbacks => "callbacks" }
+
+  post 'registration', to: 'registration#create'
+  get 'registration/:partner_id', to: 'registration#new'
   root 'welcome#index'
 end
