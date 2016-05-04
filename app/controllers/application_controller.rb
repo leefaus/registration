@@ -23,9 +23,11 @@ class ApplicationController < ActionController::Base
 
   def connect
     Octokit.configure do |c|
-      c.api_endpoint = "http://#{ENV['github_enterprise_url']}/api/v3/"
-      # allow self signed cert https
-      c.connection_options[:ssl] = { :verify => false }
+      if ENV['enterprise']
+        c.api_endpoint = "http://#{ENV['github_enterprise_url']}/api/v3/"
+        # allow self signed cert https
+        c.connection_options[:ssl] = { :verify => false }
+      end
     end
     client = Octokit::Client.new(
         :access_token => ENV['github_oauth_personal_token']
