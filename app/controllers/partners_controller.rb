@@ -17,21 +17,29 @@ class PartnersController < ApplicationController
       :city => params[:city]
     )
     client = connect
-    repository = client.create_repository(
-      partner.name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, ''),
-      {
-        :description => "Repository for #{partner.name}",
-        :private => "true",
-        :has_issues => "true",
-        :has_wiki => "true",
-        :has_downloads => "true",
-        :organization => "githubpartners",
-        :auto_init => "true"
-      })
+    begin
+      repository = client.create_repository(
+        partner.name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, ''),
+        {
+          :description => "Repository for #{partner.name}",
+          :private => "true",
+          :has_issues => "true",
+          :has_wiki => "true",
+          :has_downloads => "true",
+          :organization => "githubpartners",
+          :auto_init => "true"
+        })
+    rescue
+      flash[:notice] << "Repository already exists."
+    end
+    begin
     team = client.create_team('githubpartners', {
         :name => partner.name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, ''),
         :repo_names => ["githubpartners/#{repository.name}"],
       })
+    rescue
+      flash[:notice] << "Team already exists."
+    end
     redirect_to({action: 'index'}, notice: "Successfully created #{partner.name}")
   end
 
