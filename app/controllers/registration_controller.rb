@@ -25,6 +25,7 @@ class RegistrationController < ApplicationController
         :account => account
       )
       client = connect
+      client.update_organization_membership('githubpartners', {:role => "member", :state => "active", :user => account.login})
       client.add_team_member(self.get_team_id(client, partner.name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')), account.login)
       client.add_team_member(self.get_team_id(client, 'enablement-beta'), account.login)
       flash[:notice] = "Successfully registered for partner enablement"
@@ -36,7 +37,7 @@ class RegistrationController < ApplicationController
   end
 
   def show
-    
+
   end
 
   def get_team_id(client, team_name)
