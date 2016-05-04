@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'partners/new', to: 'partners#new'
   post 'partners', to: 'partners#create'
   post 'registration', to: 'registration#create'
+  get 'registration/show', to: 'registration#show'
   get 'registration/:partner_id', to: 'registration#new'
   root 'welcome#index'
 end
