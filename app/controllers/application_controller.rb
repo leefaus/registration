@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 
   def connect
     Octokit.configure do |c|
-      if ENV['enterprise']
+      if ENV['enterprise'].eql? "true"
         c.api_endpoint = "http://#{ENV['github_enterprise_url']}/api/v3/"
         # allow self signed cert https
         c.connection_options[:ssl] = { :verify => false }
