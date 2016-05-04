@@ -251,9 +251,7 @@ Devise.setup do |config|
       }
     }
   else
-    config.omniauth :github, ENV["github_client_id"], ENV["github_application_secret"], {
-      :scope => 'user, repo, read:org'
-    }
+    config.omniauth :github, ENV["github_client_id"], ENV["github_application_secret"], :scope => 'user, repo, read:org'
   end
 
   # ==> Warden configuration
