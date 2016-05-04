@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: registration_production
   username: registration
   password: <%= ENV['REGISTRATION_DATABASE_PASSWORD'] %>
