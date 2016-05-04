@@ -38,6 +38,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'devise', :git => "https://github.com/plataformatec/devise.git", :branch => "master"
 gem 'omniauth-github'
 gem 'figaro'
+gem 'octokit'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -243,7 +243,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   if ENV["enterprise"]
     config.omniauth :github, ENV["github_client_id"], ENV["github_application_secret"], {
-      :scope => 'user, repo',
+      :scope => 'user, repo, read:org',
       :client_options => {
         :site => "http://#{ENV['github_enterprise_url']}/api/v3",
         :authorize_url => "http://#{ENV['github_enterprise_url']}/login/oauth/authorize",
@@ -252,7 +252,7 @@ Devise.setup do |config|
     }
   else
     config.omniauth :github, ENV["github_client_id"], ENV["github_application_secret"], {
-      :scope => 'user, repo'
+      :scope => 'user, repo, read:org'
     }
   end
 

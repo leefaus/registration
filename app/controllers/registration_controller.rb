@@ -24,12 +24,26 @@ class RegistrationController < ApplicationController
         :partner => partner,
         :account => account
       )
+      client = connect
+      client.add_team_member(self.get_team_id(client, partner.name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')), account.login)
+      client.add_team_member(self.get_team_id(client, 'enablement-beta'), account.login)
       flash[:notice] = "Successfully registered for partner enablement"
     rescue ActiveRecord::RecordNotUnique => e
       logger.info(e)
       flash[:alert] = "You have already registered!"
     end
 
+  end
+
+  def get_team_id(client, team_name)
+    teams = client.organization_teams('githubpartners')
+    channel_team_id = nil
+    teams.each do |t|
+      if t.name.eql? team_name
+        channel_team_id = t.id
+      end
+    end
+    channel_team_id
   end
 
 end
