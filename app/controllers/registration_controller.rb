@@ -40,7 +40,7 @@ class RegistrationController < ApplicationController
   end
 
   def get_team_id(client, team_name)
-    teams = client.organization_teams('githubpartners')
+    teams = client.organization_teams('githubpartners', {:per_page => 500})
     channel_team_id = nil
     teams.each do |t|
       if t.name.eql? team_name
