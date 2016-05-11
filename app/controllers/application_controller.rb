@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def validate_permissions!
     @client = self.connect
-    teams = @client.organization_teams('githubpartners')
+    teams = @client.organization_teams('githubpartners'), :per_page => 200
     channel_team_id = nil
     teams.each do |t|
       if t.name.eql? "github-channels"

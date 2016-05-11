@@ -30,7 +30,7 @@ class PartnersController < ApplicationController
           :auto_init => "true"
         })
     rescue
-      flash[:notice] << "Repository already exists."
+      puts "repository already exists"
     end
     begin
     team = client.create_team('githubpartners', {
@@ -38,7 +38,7 @@ class PartnersController < ApplicationController
         :repo_names => ["githubpartners/#{repository.name}"],
       })
     rescue
-      flash[:notice] << "Team already exists."
+        puts "team already exists"
     end
     redirect_to({action: 'index'}, notice: "Successfully created #{partner.name}")
   end
