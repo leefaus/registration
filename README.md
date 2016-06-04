@@ -13,6 +13,13 @@
 - `cd registration`
 - `bundle install`
 - `rails db:create`
+-  Note: If you get an error after running `rails db:create` e.g. "could not connect to server: Connection refused" your development machine may not recognize postgresql installed from brew.
+ - Steps:
+  -  Navigate to: http://postgresapp.com/
+  -  Download postgresapp
+  -  Unzip, copy app to `Applications`
+  -  Launch .app file to start server
+
 - `rails db:migrate`
 - `rails db:seed`
 - `bundle exec figaro install`
