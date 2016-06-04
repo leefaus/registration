@@ -1,0 +1,25 @@
+<div class="row heading">
+  <div class="col-md-12">
+    <h2>Partner Registration</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <%= form_tag("/partners", method: "post") do %>
+      <fieldset class="form-group">
+        <label for="partnerName">Partner Name</label>
+        <input type="text" class="form-control" name="partnerName">
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="country">Country</label>
+        <input type="text" class="form-control" name="country">
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="city">City</label>
+        <input type="text" class="form-control" name="city">
+      </fieldset>
+      <button type="submit" class="btn btn-primary">Register</button>
+    <% end %>
+  </div>
+</div>
