@@ -27,7 +27,7 @@ body {
 }
 
 .container {
-  padding-top: 60px;
+  padding-top: 70px;
   margin-top: 10px;
 }
 
@@ -43,4 +43,19 @@ body {
   margin-top: 3px;
   float: right;
   display: inline-block;
+}
+
+input {
+  font-weight: bolder;
+}
+
+.radio-header {
+  font-weight: bold;
+  border-bottom: thin #4e4e4e solid;
+}
+
+.heading {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border-bottom: thin #4e4e4e solid;
 }

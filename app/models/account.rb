@@ -15,4 +15,6 @@ class Account < ApplicationRecord
       account.password = Devise.friendly_token[0,20]
     end
   end
+
+  has_one :registrant
 end

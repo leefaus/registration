@@ -1,6 +1,6 @@
 class DeviseCreateAccounts < ActiveRecord::Migration[5.0]
   def change
-    create_table :accounts do |t|
+    create_table :accounts, id: :uuid do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -24,7 +24,7 @@ class DeviseCreateAccounts < ActiveRecord::Migration[5.0]
       t.string   :uid
       t.string   :provider
       t.string   :login
-      
+
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at
@@ -44,5 +44,9 @@ class DeviseCreateAccounts < ActiveRecord::Migration[5.0]
     add_index :accounts, :reset_password_token, unique: true
     # add_index :accounts, :confirmation_token,   unique: true
     # add_index :accounts, :unlock_token,         unique: true
+  end
+
+  def down
+    drop_table :accounts
   end
 end
