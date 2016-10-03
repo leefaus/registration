@@ -34,6 +34,7 @@
   - `github_client_id: <value>`
   - `github_application_secret: <value>`
   - `github_enterprise_url: <value>`
+  - `enterprise: true`
 
 ## Running the Application
 - `rails s -b 0.0.0.0`
