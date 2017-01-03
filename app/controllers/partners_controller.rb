@@ -15,7 +15,7 @@ class PartnersController < ApplicationController
       :name => params[:partnerName],
       :country => params[:country],
       :city => params[:city],
-      :date => params[:date]
+      :scheduled_date => params[:date]
     )
     client = connect
     begin
@@ -41,7 +41,7 @@ class PartnersController < ApplicationController
     rescue
         puts "Team: #{partner.name} already exists"
     end
-    redirect_to({action: 'index'}, notice: "Successfully created #{partner.name}")
+    redirect_to({action: 'index'}, notice: "Successfully created #{partner.name} for training on #{partner.scheduled_date}")
   end
 
 end
