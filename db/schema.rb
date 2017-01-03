@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 20160503182329) do
     t.string   "name"
     t.string   "city"
     t.string   "country"
-    t.date     "scheduled_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
